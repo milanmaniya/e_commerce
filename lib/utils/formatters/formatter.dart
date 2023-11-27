@@ -28,12 +28,12 @@ class TFormatter {
 
     // Extract the country code from the digit only
 
-    String countryCode = '+${digitOnly.substring(0, 2)}';
-    digitOnly = digitOnly.substring(2);
+    String countryCode = '+${digitOnly.substring(0, 2)}'; // find country code and store countryCode variable
+    digitOnly = digitOnly.substring(2); // find phone number and store digit only variables
 
     // add the remaining digit with proper formatting
     final formatterNumber = StringBuffer();
-    formatterNumber.write('($countryCode)');
+    formatterNumber.write('($countryCode)'); // create a string for formating 
 
     int i = 0;
     while (i < digitOnly.length) {
