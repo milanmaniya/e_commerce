@@ -41,6 +41,9 @@ dependencies:
   logger: ^2.0.2+1
   intl: ^0.18.1
   get_storage: ^2.1.1
+  # icon_plus
+  # icons_animate
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
