@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
         animationDuration: const Duration(
           seconds: 2,
         ),
-        duration: 3000,
+        duration: 2000,
         nextScreen: const Scaffold(
+          backgroundColor: Colors.white,
           body: Center(
             child: Text(
               'Hello World!',
