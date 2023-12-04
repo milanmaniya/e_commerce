@@ -37,7 +37,9 @@ class SocialButtons extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              
+            },
             icon: Logo(Logos.facebook_f),
           ),
         ),
