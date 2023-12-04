@@ -14,7 +14,7 @@ class OnBoardingController extends GetxController {
     currentIndex.value = index;
   }
 
-  void nextPage(index) {
+  void nextPage() {
     if (currentIndex.value == 2) {
       log('Login Screen Present');
     } else {
