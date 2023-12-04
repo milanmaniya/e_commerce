@@ -13,7 +13,7 @@ class OnBoardingDotIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: TDeviceUtility.getBottomNavigationBarHeight(),
+      bottom: TDeviceUtility.getBottomNavigationBarHeight() + 20,
       left: TSize.defaultSpace,
       child: SmoothPageIndicator(
         controller: OnBoardingController.instance.pageController,
