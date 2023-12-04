@@ -97,6 +97,7 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(
             height: TSize.spaceBtwSections,
           ),
+
           // signup button
           SizedBox(
             width: double.infinity,
