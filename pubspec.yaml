@@ -41,11 +41,11 @@ dependencies:
   logger: ^2.0.2+1
   intl: ^0.18.1
   get_storage: ^2.1.1
-  # icon_plus
   # icons_animate
   iconsax: ^0.0.8
   animated_splash_screen: ^1.3.0
   smooth_page_indicator: ^1.1.0
+  icons_plus: ^4.0.0
 
 dev_dependencies:
   flutter_test:
