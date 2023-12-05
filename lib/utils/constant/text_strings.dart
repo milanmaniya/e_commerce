@@ -37,7 +37,7 @@ class TTexts {
   static const emailNotRecivedMessage =
       'Didn\'t get the email? Check Your junk/spam or resend it.';
   static const yourAccountCreatedTitle = 'Your account successfully created!';
-  static const emailNotRecivedSubTitle =
+  static const yourAccountCreatedSubTitle =
       'Welcome to your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Samless Online Shopping!';
 
   // authentication Form text

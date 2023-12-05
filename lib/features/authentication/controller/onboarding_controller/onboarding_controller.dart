@@ -15,7 +15,7 @@ class OnBoardingController extends GetxController {
 
   void nextPage() {
     if (currentIndex.value == 2) {
-      Get.offAll(const LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } else {
       final page = currentIndex.value + 1;
       pageController.jumpToPage(page);
