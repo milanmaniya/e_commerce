@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/screens/home_screem/home_screen.dart';
 import 'package:e_commerce/utils/helper/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class NavigationMenu extends StatelessWidget {
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
             NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
-            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'), 
+            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
         ),
       ),
@@ -45,9 +46,7 @@ class NavigationMenuController extends GetxController {
   final selectedIndex = 0.obs;
 
   final screenList = [
-    const Text(
-      'Home',
-    ),
+    const HomeScreen(),
     const Text(
       'Store',
     ),
