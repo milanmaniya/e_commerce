@@ -1,7 +1,6 @@
 import 'package:e_commerce/utils/constant/colors.dart';
 import 'package:flutter/material.dart';
 
-
 class CircularContainer extends StatelessWidget {
   const CircularContainer({
     super.key,
