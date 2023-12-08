@@ -66,7 +66,7 @@ class VerifyEmail extends StatelessWidget {
                     () => SucessScreen(
                       imageString:
                           'assets/images/animation/account_create_successfully.png',
-                      pressed: () => Get.to(
+                      pressed: () => Get.offAll(
                         () => const LoginScreen(),
                       ),
                       subTitle: TTexts.yourAccountCreatedSubTitle,
