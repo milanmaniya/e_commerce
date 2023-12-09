@@ -54,12 +54,23 @@ class HomeScreen extends StatelessWidget {
                         ),
 
                         // categaries
-
                         const HomeCategories(),
                       ],
                     ),
                   ),
                 ],
+              ),
+            ),
+
+            // body
+            Padding(
+              padding: const EdgeInsets.all(TSize.spaceBtwSections),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(TSize.md),
+                child: const Image(
+                  height: 200,
+                  image: AssetImage('assets/images/animation/verify_email.png'),
+                ),
               ),
             ),
           ],

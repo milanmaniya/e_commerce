@@ -1,7 +1,6 @@
 import 'package:e_commerce/common/widget/image_text_widgets/vertical_image_text.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeCategories extends StatelessWidget {
   const HomeCategories({
     super.key,
