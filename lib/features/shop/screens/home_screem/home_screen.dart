@@ -3,6 +3,7 @@ import 'package:e_commerce/common/custom_shape/container/custom_search_container
 import 'package:e_commerce/common/texts/selection_heading.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_categories.dart';
+import 'package:e_commerce/features/shop/screens/home_screem/widget/promo_slider.dart';
 import 'package:e_commerce/utils/constant/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/common/custom_shape/container/primary_header_container.dart';
@@ -63,14 +64,16 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // body
-            Padding(
-              padding: const EdgeInsets.all(TSize.spaceBtwSections),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(TSize.md),
-                child: const Image(
-                  height: 200,
-                  image: AssetImage('assets/images/animation/verify_email.png'),
-                ),
+            const Padding(
+              padding: EdgeInsets.all(
+                TSize.spaceBtwSections,
+              ),
+              child: PromoSlider(
+                banner: [
+                  'assets/images/banner_images/first_banner.jpg',
+                  'assets/images/banner_images/second_banner.jpg',
+                  'assets/images/banner_images/third_banner.jpg',
+                ],
               ),
             ),
           ],
