@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/custom_shape/container/circular_container.dart';
 import 'package:e_commerce/common/style/shadow.dart';
+import 'package:e_commerce/common/texts/product_price_text.dart';
 import 'package:e_commerce/common/texts/product_title_text.dart';
 import 'package:e_commerce/common/widget/icon/circular_icon.dart';
 import 'package:e_commerce/common/widget/images/rounded_images.dart';
@@ -107,11 +108,8 @@ class ProductCardVertical extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '\$35.5',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.headlineMedium,
+                      const ProductPriceText(
+                        price: '35',
                       ),
                       Container(
                         alignment: Alignment.center,
