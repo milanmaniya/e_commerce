@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:e_commerce/common/custom_shape/container/custom_search_container.dart';
 import 'package:e_commerce/common/texts/selection_heading.dart';
+import 'package:e_commerce/common/widget/products/product_cards/product_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/promo_slider.dart';
@@ -64,15 +65,37 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // body
-            const Padding(
-              padding: EdgeInsets.all(
+            Padding(
+              padding: const EdgeInsets.all(
                 TSize.spaceBtwSections,
               ),
-              child: PromoSlider(
-                banner: [
-                  'assets/images/banner_images/first_banner.jpg',
-                  'assets/images/banner_images/second_banner.jpg',
-                  'assets/images/banner_images/third_banner.jpg',
+              child: Column(
+                children: [
+                  const PromoSlider(
+                    banner: [
+                      'assets/images/banner_images/first_banner.jpg',
+                      'assets/images/banner_images/second_banner.jpg',
+                      'assets/images/banner_images/third_banner.jpg',
+                    ],
+                  ),
+                  const SizedBox(
+                    height: TSize.spaceBtwSections,
+                  ),
+                  GridView.builder(
+                    itemCount: 4,
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: TSize.gridViewSpacing,
+                      crossAxisSpacing: TSize.gridViewSpacing,
+                      mainAxisExtent: 288,
+                    ),
+                    itemBuilder: (context, index) =>
+                        const ProductCardVertical(),
+                  ),
                 ],
               ),
             ),

@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 class CircularContainer extends StatelessWidget {
   const CircularContainer({
     super.key,
-    this.height = 400,
-    this.width = 400,
+    this.height,
+    this.width,
     this.radius = 400,
-    this.padding = 0,
+    this.padding,
     this.backgroundColor = TColor.white,
     this.child,
     this.margin,
   });
 
   final double? height, width;
-  final double radius, padding;
+  final double radius;
+  final EdgeInsetsGeometry? padding;
   final Color backgroundColor;
   final Widget? child;
   final EdgeInsets? margin;
@@ -28,7 +29,7 @@ class CircularContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(radius),
         color: backgroundColor,
       ),
-      padding: EdgeInsets.all(padding),
+      padding: padding,
       margin: margin,
       child: child,
     );
