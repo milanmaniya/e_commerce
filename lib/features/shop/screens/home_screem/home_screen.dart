@@ -82,9 +82,11 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: TSize.spaceBtwSections,
                   ),
-                  GridLayout(
-                    itemCount: 4,
-                    itemBuilder: (_, index) => const ProductCardVertical(),
+                  Expanded(
+                    child: GridLayout(
+                      itemCount: 4,
+                      itemBuilder: (_, index) => const ProductCardVertical(),
+                    ),
                   ),
                 ],
               ),
