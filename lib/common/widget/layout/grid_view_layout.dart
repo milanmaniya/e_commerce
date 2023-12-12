@@ -16,10 +16,10 @@ class GridLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: itemCount  ,
+      itemCount: itemCount,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
+      // shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: TSize.gridViewSpacing,

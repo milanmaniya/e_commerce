@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:e_commerce/common/custom_shape/container/custom_search_container.dart';
 import 'package:e_commerce/common/texts/selection_heading.dart';
-import 'package:e_commerce/common/widget/layout/grid_view_layout.dart';
-import 'package:e_commerce/common/widget/products/product_cards/product_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/promo_slider.dart';
@@ -66,28 +64,28 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // body
-            Padding(
-              padding: const EdgeInsets.all(
+            const Padding(
+              padding: EdgeInsets.all(
                 TSize.spaceBtwSections,
               ),
               child: Column(
                 children: [
-                  const PromoSlider(
+                  PromoSlider(
                     banner: [
                       'assets/images/banner_images/first_banner.jpg',
                       'assets/images/banner_images/second_banner.jpg',
                       'assets/images/banner_images/third_banner.jpg',
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: TSize.spaceBtwSections,
                   ),
-                  Expanded(
-                    child: GridLayout(
-                      itemCount: 4,
-                      itemBuilder: (_, index) => const ProductCardVertical(),
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: GridLayout(
+                  //     itemCount: 2,
+                  //     itemBuilder: (_, index) => const ProductCardVertical(),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
