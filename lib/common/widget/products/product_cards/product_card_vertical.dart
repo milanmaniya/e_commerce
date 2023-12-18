@@ -1,7 +1,5 @@
 import 'package:e_commerce/common/custom_shape/container/circular_container.dart';
 import 'package:e_commerce/common/style/shadow.dart';
-import 'package:e_commerce/common/texts/product_price_text.dart';
-import 'package:e_commerce/common/texts/product_title_text.dart';
 import 'package:e_commerce/common/widget/icon/circular_icon.dart';
 import 'package:e_commerce/common/widget/images/rounded_images.dart';
 import 'package:e_commerce/utils/constant/colors.dart';
@@ -20,7 +18,6 @@ class ProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 180,
         alignment: Alignment.center,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -33,7 +30,7 @@ class ProductCardVertical extends StatelessWidget {
             CircularContainer(
               height: 178,
               padding: const EdgeInsets.all(TSize.sm),
-              backgroundColor: dark ? TColor.dark : TColor.white,
+              // backgroundColor: dark ? TColor.white : TColor.dark,
               child: Stack(
                 children: [
                   const RoundedImage(
@@ -69,72 +66,72 @@ class ProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: TSize.spaceBtwItems / 2,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: TSize.sm,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ProductTitleText(
-                    title: 'Green Nike Air Shoes',
-                    smallSize: true,
-                  ),
-                  const SizedBox(
-                    height: TSize.spaceBtwItems / 2,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: TSize.xs,
-                      ),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: TColor.primary,
-                        size: TSize.iconXs,
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const ProductPriceText(
-                        price: '35',
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                          color: TColor.black,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSize.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(TSize.peoductImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          height: TSize.iconLg * 1.2,
-                          width: TSize.iconLg * 1.2,
-                          child: Icon(
-                            Iconsax.add,
-                            color: TColor.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            // const SizedBox(
+            //   height: TSize.spaceBtwItems / 2,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(
+            //     left: TSize.sm,
+            //   ),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       const ProductTitleText(
+            //         title: 'Green Nike Air Shoes',
+            //         smallSize: true,
+            //       ),
+            //       const SizedBox(
+            //         height: TSize.spaceBtwItems / 2,
+            //       ),
+            //       Row(
+            //         children: [
+            //           Text(
+            //             'Nike',
+            //             overflow: TextOverflow.ellipsis,
+            //             maxLines: 1,
+            //             style: Theme.of(context).textTheme.labelMedium,
+            //           ),
+            //           const SizedBox(
+            //             width: TSize.xs,
+            //           ),
+            //           const Icon(
+            //             Iconsax.verify5,
+            //             color: TColor.primary,
+            //             size: TSize.iconXs,
+            //           ),
+            //         ],
+            //       ),
+            //       const Spacer(),
+            //       Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //         children: [
+            //           const ProductPriceText(
+            //             price: '35',
+            //           ),
+            //           Container(
+            //             alignment: Alignment.center,
+            //             decoration: const BoxDecoration(
+            //               color: TColor.black,
+            //               borderRadius: BorderRadius.only(
+            //                 topLeft: Radius.circular(TSize.cardRadiusMd),
+            //                 bottomRight:
+            //                     Radius.circular(TSize.peoductImageRadius),
+            //               ),
+            //             ),
+            //             child: const SizedBox(
+            //               height: TSize.iconLg * 1.2,
+            //               width: TSize.iconLg * 1.2,
+            //               child: Icon(
+            //                 Iconsax.add,
+            //                 color: TColor.white,
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),

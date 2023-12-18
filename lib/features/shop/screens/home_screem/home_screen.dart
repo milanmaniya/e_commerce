@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:e_commerce/common/custom_shape/container/custom_search_container.dart';
 import 'package:e_commerce/common/texts/selection_heading.dart';
+import 'package:e_commerce/common/widget/products/product_cards/product_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home_screem/widget/promo_slider.dart';
@@ -80,12 +81,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: TSize.spaceBtwSections,
                   ),
-                  // Expanded(
-                  //   child: GridLayout(
-                  //     itemCount: 2,
-                  //     itemBuilder: (_, index) => const ProductCardVertical(),
-                  //   ),
-                  // ),
+                  ProductCardVertical(),
                 ],
               ),
             ),
