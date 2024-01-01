@@ -12,6 +12,8 @@ import 'package:e_commerce/common/custom_shape/container/primary_header_containe
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  get itemBuilder => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,23 +67,34 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // body
-            const Padding(
-              padding: EdgeInsets.all(
+            Padding(
+              padding: const EdgeInsets.all(
                 TSize.spaceBtwSections,
               ),
               child: Column(
                 children: [
-                  PromoSlider(
+                  const PromoSlider(
                     banner: [
                       'assets/images/banner_images/first_banner.jpg',
                       'assets/images/banner_images/second_banner.jpg',
                       'assets/images/banner_images/third_banner.jpg',
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: TSize.spaceBtwSections,
                   ),
-                  ProductCardVertical(),
+                  Expanded(
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                      ),
+                      itemBuilder: (context, index) =>
+                          const ProductCardVertical(),
+                    ),
+                  ),
                 ],
               ),
             ),

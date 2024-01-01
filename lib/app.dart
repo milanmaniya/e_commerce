@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       theme: TAppTheme.lightTheme,
       home: AnimatedSplashScreen(
-        splash: 'assets/logos/TRENDY-logos_black.png',
+        splash: 'assets/logos/EduFlex.png',
         centered: true,
         splashIconSize: 550,
         animationDuration: const Duration(

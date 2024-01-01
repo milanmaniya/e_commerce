@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_commerce/features/authentication/screens/passowrd_configuration/forgot_password.dart';
 import 'package:e_commerce/features/authentication/screens/sign_up_screen/signup_screen.dart';
 import 'package:e_commerce/navigation_menu.dart';
@@ -7,11 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
   });
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool isObset = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -33,10 +41,18 @@ class LoginForm extends StatelessWidget {
             ),
             // password
             TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                suffixIcon: Icon(Iconsax.eye_slash),
+              obscureText: isObset,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: const Icon(Iconsax.eye_slash),
+                  onPressed: () {
+                    setState(() {
+                      isObset = !isObset;
+                      log(isObset.toString());
+                    });
+                  },
+                ),
                 labelText: TTexts.password,
               ),
             ),

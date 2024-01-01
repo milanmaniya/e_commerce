@@ -3,14 +3,21 @@ import 'package:e_commerce/features/authentication/screens/sign_up_screen/widget
 import 'package:e_commerce/utils/constant/sizes.dart';
 import 'package:e_commerce/utils/constant/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
   });
 
+  @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  bool isObsecure = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -47,6 +54,9 @@ class SignUpForm extends StatelessWidget {
 
           // username
           TextFormField(
+            validator: MultiValidator([
+              RequiredValidator(errorText: 'UserName fill is required'),
+            ]),
             decoration: const InputDecoration(
               labelText: TTexts.userName,
               prefixIcon: Icon(Iconsax.user_tick),
@@ -58,6 +68,10 @@ class SignUpForm extends StatelessWidget {
 
           // Email
           TextFormField(
+            validator: MultiValidator([
+              EmailValidator(errorText: 'This Email is not valid '),
+              RequiredValidator(errorText: 'Email id fill is required'),
+            ]),
             decoration: const InputDecoration(
               labelText: TTexts.email,
               prefixIcon: Icon(Iconsax.direct),
@@ -68,6 +82,8 @@ class SignUpForm extends StatelessWidget {
           ),
           // phone number
           TextFormField(
+            keyboardType: TextInputType.number,
+            maxLength: 10,
             decoration: const InputDecoration(
               labelText: TTexts.phoneNumber,
               prefixIcon: Icon(Iconsax.call),
@@ -80,11 +96,18 @@ class SignUpForm extends StatelessWidget {
 
           //password
           TextFormField(
-            obscureText: true,
-            decoration: const InputDecoration(
+            obscureText: isObsecure,
+            decoration: InputDecoration(
               labelText: TTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+              prefixIcon: const Icon(Iconsax.password_check),
+              suffixIcon: IconButton(
+                icon: const Icon(Iconsax.eye_slash),
+                onPressed: () {
+                  setState(() {
+                    isObsecure = !isObsecure;
+                  });
+                },
+              ),
             ),
           ),
 
@@ -105,7 +128,7 @@ class SignUpForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Get.to(()=>const VerifyEmail());
+                Get.to(() => const VerifyEmail());
               },
               child: const Text(TTexts.createAccount),
             ),

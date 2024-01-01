@@ -1,5 +1,7 @@
 import 'package:e_commerce/common/custom_shape/container/circular_container.dart';
 import 'package:e_commerce/common/style/shadow.dart';
+import 'package:e_commerce/common/texts/product_price_text.dart';
+import 'package:e_commerce/common/texts/product_title_text.dart';
 import 'package:e_commerce/common/widget/icon/circular_icon.dart';
 import 'package:e_commerce/common/widget/images/rounded_images.dart';
 import 'package:e_commerce/utils/constant/colors.dart';
@@ -18,6 +20,7 @@ class ProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
+        width: 200,
         alignment: Alignment.center,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -27,13 +30,13 @@ class ProductCardVertical extends StatelessWidget {
         ),
         child: Column(
           children: [
-            CircularContainer(
-              height: 178,
+            Container(
               padding: const EdgeInsets.all(TSize.sm),
               // backgroundColor: dark ? TColor.white : TColor.dark,
               child: Stack(
                 children: [
                   const RoundedImage(
+                    height: 100,
                     fit: BoxFit.cover,
                     imageUrl: 'assets/images/banner_images/first_banner.jpg',
                     applyImageRadius: true,

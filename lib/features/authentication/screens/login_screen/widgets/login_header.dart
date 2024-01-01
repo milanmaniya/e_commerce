@@ -1,7 +1,5 @@
-import 'package:e_commerce/utils/constant/image_string.dart';
 import 'package:e_commerce/utils/constant/sizes.dart';
 import 'package:e_commerce/utils/constant/text_strings.dart';
-import 'package:e_commerce/utils/helper/helper_function.dart';
 import 'package:flutter/material.dart';
 
 class LoginHeader extends StatelessWidget {
@@ -11,15 +9,14 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
+        const Image(
           height: 150,
           image: AssetImage(
-            dark ? TImages.lightAppLogo : TImages.darkAppLogo,
+            // 'assets/logos/EduFlex.png',
+            'assets/logos/EduFlex-removebg-preview.png',
           ),
         ),
         Text(

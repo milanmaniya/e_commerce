@@ -9,6 +9,6 @@ class TImages {
   static const onBoardingScreen3 =
       'assets/images/on_boarding_images/delivery_product.gif';
 
-  static const lightAppLogo = 'assets/logos/TRENDY-logos_white.png';
-  static const darkAppLogo = 'assets/logos/TRENDY-logos_black.png';
+  static const lightAppLogo = 'assets/logos/EduFlex.png';
+  static const darkAppLogo = 'assets/logos/EduFlex (black).png';
 }
