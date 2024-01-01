@@ -18,9 +18,13 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   bool isObsecure = true;
+
+  final _key = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _key,
       child: Column(
         children: [
           Row(
@@ -128,7 +132,9 @@ class _SignUpFormState extends State<SignUpForm> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Get.to(() => const VerifyEmail());
+                if (_key.currentState!.validate()) {
+                  Get.to(() => const VerifyEmail());
+                }
               },
               child: const Text(TTexts.createAccount),
             ),

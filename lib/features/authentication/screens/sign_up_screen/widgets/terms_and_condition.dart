@@ -3,12 +3,17 @@ import 'package:e_commerce/utils/constant/text_strings.dart';
 import 'package:e_commerce/utils/helper/helper_function.dart';
 import 'package:flutter/material.dart';
 
-
-class TermsAndConditionText extends StatelessWidget {
+class TermsAndConditionText extends StatefulWidget {
   const TermsAndConditionText({
     super.key,
   });
 
+  @override
+  State<TermsAndConditionText> createState() => _TermsAndConditionTextState();
+}
+
+class _TermsAndConditionTextState extends State<TermsAndConditionText> {
+  bool isAgree = false;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
@@ -19,8 +24,12 @@ class TermsAndConditionText extends StatelessWidget {
           height: 25,
           width: 25,
           child: Checkbox(
-            value: true,
-            onChanged: (value) {},
+            value: isAgree,
+            onChanged: (value) {
+              setState(() {
+                isAgree = value!;
+              });
+            },
           ),
         ),
         Text.rich(
