@@ -3,6 +3,7 @@ import 'package:e_commerce/features/authentication/screens/sign_up_screen/widget
 import 'package:e_commerce/utils/constant/sizes.dart';
 import 'package:e_commerce/utils/constant/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -87,7 +88,25 @@ class _SignUpFormState extends State<SignUpForm> {
           // phone number
           TextFormField(
             keyboardType: TextInputType.number,
-            maxLength: 10,
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(10),
+            ],
+            validator: (value) {
+              if (value == null) {
+                return 'Phone Number fill is required';
+              } else if (value.length < 11) {
+                return 'Phone Number should be 10 digit';
+              }
+              return null;
+            },
+            // validator: MultiValidator([
+            //   RangeValidator(
+            //       min: 10,
+            //       max: 10,
+            //       errorText: 'Phone Number is should be 10 digit'),
+            //   RequiredValidator(errorText: 'Phone Number fill is required'),
+            // ]),
             decoration: const InputDecoration(
               labelText: TTexts.phoneNumber,
               prefixIcon: Icon(Iconsax.call),

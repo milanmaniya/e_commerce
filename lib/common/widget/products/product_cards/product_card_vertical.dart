@@ -1,7 +1,5 @@
 import 'package:e_commerce/common/custom_shape/container/circular_container.dart';
 import 'package:e_commerce/common/style/shadow.dart';
-import 'package:e_commerce/common/texts/product_price_text.dart';
-import 'package:e_commerce/common/texts/product_title_text.dart';
 import 'package:e_commerce/common/widget/icon/circular_icon.dart';
 import 'package:e_commerce/common/widget/images/rounded_images.dart';
 import 'package:e_commerce/utils/constant/colors.dart';

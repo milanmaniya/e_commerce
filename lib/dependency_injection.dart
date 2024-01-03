@@ -2,5 +2,5 @@ import 'package:e_commerce/features/authentication/controller/onboarding_control
 import 'package:get/get.dart';
 
 class DependencyInjection extends GetxController {
- static get controller => Get.lazyPut(() => OnBoardingController());
+  static get controller => Get.lazyPut(() => OnBoardingController());
 }
