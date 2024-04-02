@@ -21,3 +21,11 @@ const home = 'Home',
     categories = 'Categrories',
     cart = 'Cart',
     account = 'Account';
+
+const searchAnything = 'Search Anything...',
+    todayDeal = "Today's Deal",
+    flashSale = 'Flash Sale',
+    topBrand = 'Top Brand',
+    topSeller = 'Top Seller',
+    topCategories = 'Top Categories',
+    featuredCategories = 'Fetured Categories';
