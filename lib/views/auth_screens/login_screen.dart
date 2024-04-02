@@ -5,7 +5,7 @@ import 'package:e_commerce/common/widget/elevated_button.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/utils/constants/icon_lists.dart';
 import 'package:e_commerce/views/auth_screens/sign_up_screen.dart';
-import 'package:e_commerce/views/home_screen/home_screen.dart';
+import 'package:e_commerce/views/dashboard_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       backgroundColor: redColor,
                       foregroundColor: whiteColor,
                       onPress: () {
-                        Get.to(() => const HomeScreen());
+                        Get.to(() => const DashBoardScreen());
                       },
                       title: login,
                     ),
