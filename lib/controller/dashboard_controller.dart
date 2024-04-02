@@ -1,8 +1,12 @@
 import 'package:e_commerce/utils/constants/consts.dart';
+import 'package:e_commerce/views/account_sreen/account_screen.dart';
+import 'package:e_commerce/views/cart_screen/cart_screen.dart';
+import 'package:e_commerce/views/category_screen/category_screen.dart';
+import 'package:e_commerce/views/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class DashBoardController extends GetxController {
   var currentIndex = 0.obs;
 
   var navBarItem = [
@@ -37,17 +41,9 @@ class HomeController extends GetxController {
   ].obs;
 
   var navBody = [
-    Container(
-      color: redColor,
-    ),
-    Container(
-      color: golden,
-    ),
-    Container(
-      color: lightGolen,
-    ),
-    Container(
-      color: fontGrey,
-    ),
+    const HomeScreen(),
+    const CategoryScreen(),
+    const CartScreen(),
+    const AccountSCreen()
   ].obs;
 }
