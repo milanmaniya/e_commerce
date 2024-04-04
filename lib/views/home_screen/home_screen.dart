@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      10.heightBox,
+                      17.heightBox,
                       Row(
                         children: [
                           Expanded(
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      15.heightBox,
+                      17.heightBox,
                       VxSwiper.builder(
                         autoPlay: true,
                         height: 180,
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      10.heightBox,
+                      17.heightBox,
                       Row(
                         children: [
                           Expanded(
@@ -233,8 +233,75 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      10.heightBox,
-                      'dbfjbdf'.text.make(),
+                      17.heightBox,
+                      VxSwiper.builder(
+                        autoPlay: true,
+                        height: 180,
+                        enlargeCenterPage: true,
+                        scrollPhysics: const BouncingScrollPhysics(),
+                        itemCount: secondSliderList.length,
+                        itemBuilder: (context, index) => Builder(
+                          builder: (context) {
+                            return ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Card(
+                                child: Image.asset(
+                                  secondSliderList[index],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      17.heightBox,
+                      GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 6,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          mainAxisExtent: 275,
+                        ),
+                        itemBuilder: (context, index) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              imgP1,
+                              width: 200,
+                              height: 200,
+                              fit: BoxFit.cover,
+                            ),
+                            const Spacer(),
+                            'Laptop 4GB/64GB'
+                                .text
+                                .fontFamily(semibold)
+                                .color(darkFontGrey)
+                                .make(),
+                            10.heightBox,
+                            '\$600'
+                                .text
+                                .fontFamily(bold)
+                                .color(redColor)
+                                .size(16)
+                                .make(),
+                          ],
+                        )
+                            .box
+                            .white
+                            .rounded
+                            .padding(
+                              const EdgeInsets.only(
+                                bottom: 15,
+                                left: 15,
+                                right: 15,
+                              ),
+                            )
+                            .make(),
+                      ),
                     ],
                   ),
                 ),

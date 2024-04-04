@@ -43,3 +43,27 @@ const featuredTitle2 = [
   mobilePhone,
   tShrirts,
 ];
+
+const categoriesList = [
+  womenDress,
+  menClothingFashion,
+  compAccess,
+  autoMobile,
+  kidtoys,
+  sports,
+  jewelery,
+  cellPhone,
+  furniture,
+];
+
+const categoriesImage = [
+  imgFc1,
+  imgFc2,
+  imgFc3,
+  imgFc4,
+  imgFc5,
+  imgFc6,
+  imgFc7,
+  imgFc8,
+  imgFc9,
+];
