@@ -1,4 +1,4 @@
-import 'package:e_commerce/common/widget/common_logo_container.dart';
+import 'package:e_commerce/common/widgets/common_logo_container.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/views/auth_screens/login_screen.dart';
 import 'package:flutter/material.dart';

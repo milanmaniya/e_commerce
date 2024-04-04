@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       title: appname,
       theme: ThemeData(
-        useMaterial3: true,
+        // useMaterial3: true,
         scaffoldBackgroundColor: Colors.transparent,
         fontFamily: regular,
         appBarTheme: const AppBarTheme(

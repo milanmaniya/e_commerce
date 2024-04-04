@@ -1,7 +1,7 @@
-import 'package:e_commerce/common/widget/bg_widget.dart';
-import 'package:e_commerce/common/widget/common_logo_container.dart';
-import 'package:e_commerce/common/widget/custome_textfield.dart';
-import 'package:e_commerce/common/widget/elevated_button.dart';
+import 'package:e_commerce/common/widgets/bg_widget.dart';
+import 'package:e_commerce/common/widgets/common_logo_container.dart';
+import 'package:e_commerce/common/widgets/custome_textfield.dart';
+import 'package:e_commerce/common/widgets/elevated_button.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
