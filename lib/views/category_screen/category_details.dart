@@ -1,5 +1,7 @@
 import 'package:e_commerce/common/widgets/bg_widget.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
+import 'package:e_commerce/utils/constants/icon_lists.dart';
+import 'package:e_commerce/views/category_screen/item_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,60 +21,84 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          actions: const [
-            Padding(
-              padding: EdgeInsets.only(
-                right: 20,
-              ),
-              child: Icon(
-                Icons.search,
-                color: whiteColor,
-              ),
-            ),
-          ],
-          title: widget.title.text.fontFamily(bold).white.make(),
+          title: categories.text.white.fontFamily(bold).make(),
         ),
-        body: Padding(
+        body: Container(
           padding: const EdgeInsets.all(12),
           child: Column(
             children: [
               SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: List.generate(
                     6,
                     (index) => 'Baby Clothing'
                         .text
-                        .size(14)
-                        .fontFamily(semibold)
+                        .align(TextAlign.center)
                         .make()
                         .box
-                        .white
                         .alignCenter
+                        .size(100, 40)
                         .roundedSM
-                        .size(110, 50)
                         .margin(
-                          const EdgeInsets.symmetric(horizontal: 4),
+                          const EdgeInsets.symmetric(horizontal: 5),
                         )
+                        .white
                         .make(),
                   ),
                 ),
               ),
               20.heightBox,
-              GridView.builder(
-                shrinkWrap: true,
-                itemCount: 6,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 2,
-                  mainAxisExtent: 200,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                ),
-                itemBuilder: (context, index) => Container(
-                  color: Vx.yellow500,
+              Expanded(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: categoriesImage.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 10,
+                    mainAxisExtent: 240,
+                  ),
+                  itemBuilder: (context, index) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        imgP5,
+                        width: 200,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                      'Laptop 4GB/64GB'
+                          .text
+                          .color(darkFontGrey)
+                          .fontFamily(semibold)
+                          .make(),
+                      10.heightBox,
+                      '\$600'
+                          .text
+                          .color(redColor)
+                          .fontFamily(bold)
+                          .size(16)
+                          .make(),
+                      10.heightBox,
+                    ],
+                  )
+                      .box
+                      .white
+                      .margin(const EdgeInsets.symmetric(horizontal: 4))
+                      .padding(
+                        const EdgeInsets.all(12),
+                      )
+                      .outerShadowMd
+                      .roundedSM
+                      .make()
+                      .onTap(
+                    () {
+                      Get.to(
+                        () => const ItemDetailScreen(title: 'Dummy Item'),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

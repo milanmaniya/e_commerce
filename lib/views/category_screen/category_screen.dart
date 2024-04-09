@@ -3,7 +3,6 @@ import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/utils/constants/icon_lists.dart';
 import 'package:e_commerce/views/category_screen/category_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -74,5 +73,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
     );
+  
   }
 }
