@@ -1,3 +1,5 @@
+import 'package:e_commerce/utils/constants/colors.dart';
+import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
@@ -10,10 +12,13 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Cart Screen'),
-      ),
+    return Container(
+      color: Colors.white,
+      child: "Cart is Empty!"
+          .text
+          .color(darkFontGrey)
+          .fontFamily(semibold)
+          .makeCentered(),
     );
   }
 }

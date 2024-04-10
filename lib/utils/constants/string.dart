@@ -46,3 +46,12 @@ const womenClothing = 'Women Clothing',
     jewelery = 'Jewelery',
     cellPhone = 'Cell Phone',
     furniture = 'Furniture';
+
+const video = "Video",
+    reviews = "Reviews",
+    sellerPolicy = "Seller Policy",
+    returnPolicy = "Return Policy",
+    supportPolicy = "Support Policy",
+    productsyoumaylike = "Products you may also like";
+
+const wishlist = "My Wishlist", orders = 'My Orders', messages = "Messages";
