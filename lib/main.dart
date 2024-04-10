@@ -3,7 +3,7 @@ import 'package:e_commerce/views/splash_screens/splash_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
