@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1086237371512",
+    "project_id": "codeland-b68f9",
+    "storage_bucket": "codeland-b68f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086237371512:android:196e18c6fdd800a4ec918d",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADydHfzywdWmyeum-RZhjeYg1mAkFatf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086237371512:android:6d3b01aad50a4a04ec918d",
+        "android_client_info": {
+          "package_name": "com.example.interview_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADydHfzywdWmyeum-RZhjeYg1mAkFatf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
