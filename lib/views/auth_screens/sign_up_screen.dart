@@ -2,6 +2,7 @@ import 'package:e_commerce/common/widgets/bg_widget.dart';
 import 'package:e_commerce/common/widgets/common_logo_container.dart';
 import 'package:e_commerce/common/widgets/custome_textfield.dart';
 import 'package:e_commerce/common/widgets/elevated_button.dart';
+import 'package:e_commerce/controller/auth_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,13 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
+
+  final controller = Get.put(AuthContoller());
+
+  final TextEditingController txtname = TextEditingController();
+  final TextEditingController txtemail = TextEditingController();
+  final TextEditingController txtpassword = TextEditingController();
+  final TextEditingController txtRepassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +51,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     customeTextField(
                       title: name,
                       hint: nameHint,
+                      controller: txtname,
                     ),
                     15.heightBox,
                     customeTextField(
                       title: email,
                       hint: emailHint,
+                      controller: txtemail,
                     ),
                     15.heightBox,
                     customeTextField(
                       title: password,
+                      controller: txtpassword,
                       hint: passwordHint,
                     ),
                     15.heightBox,
                     customeTextField(
                       title: retypePassword,
+                      controller: txtRepassword,
                       hint: passwordHint,
                     ),
                     10.heightBox,
