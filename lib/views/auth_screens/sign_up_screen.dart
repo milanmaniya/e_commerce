@@ -4,6 +4,7 @@ import 'package:e_commerce/common/widgets/custome_textfield.dart';
 import 'package:e_commerce/common/widgets/elevated_button.dart';
 import 'package:e_commerce/controller/auth_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
+import 'package:e_commerce/views/dashboard_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       child: bgWidget(
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: false, 
           body: Center(
             child: Column(
               children: [
@@ -46,101 +47,131 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     .fontFamily(bold)
                     .make(),
                 15.heightBox,
-                Column(
-                  children: [
-                    customeTextField(
-                      title: name,
-                      hint: nameHint,
-                      controller: txtname,
-                    ),
-                    15.heightBox,
-                    customeTextField(
-                      title: email,
-                      hint: emailHint,
-                      controller: txtemail,
-                    ),
-                    15.heightBox,
-                    customeTextField(
-                      title: password,
-                      controller: txtpassword,
-                      hint: passwordHint,
-                    ),
-                    15.heightBox,
-                    customeTextField(
-                      title: retypePassword,
-                      controller: txtRepassword,
-                      hint: passwordHint,
-                    ),
-                    10.heightBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                          checkColor: redColor,
-                          value: isChecked,
-                          onChanged: (value) {
-                            isChecked = value;
-                            setState(() {});
-                          },
-                        ),
-                        Expanded(
-                          child: RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(text: 'I agree to the '),
-                                TextSpan(
-                                  text: termsCondition,
-                                  style: TextStyle(
-                                    fontFamily: bold,
-                                    color: redColor,
-                                  ),
-                                ),
-                                TextSpan(text: ' & '),
-                                TextSpan(
-                                  text: privacyPolicy,
-                                  style: TextStyle(
-                                    fontFamily: bold,
-                                    color: redColor,
-                                  ),
-                                ),
-                              ],
+                Obx(
+                  () => Column(
+                    children: [
+                      customeTextField(
+                        title: name,
+                        hint: nameHint,
+                        controller: txtname,
+                      ),
+                      15.heightBox,
+                      customeTextField(
+                        title: email,
+                        hint: emailHint,
+                        controller: txtemail,
+                      ),
+                      15.heightBox,
+                      customeTextField(
+                        obscureText: true,
+                        title: password,
+                        controller: txtpassword,
+                        hint: passwordHint,
+                      ),
+                      15.heightBox,
+                      customeTextField(
+                        obscureText: true,
+                        title: retypePassword,
+                        controller: txtRepassword,
+                        hint: passwordHint,
+                      ),
+                      10.heightBox,
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Checkbox(
+                              checkColor: redColor,
+                              value: isChecked,
+                              onChanged: (value) {
+                                isChecked = value;
+                                setState(() {});
+                              },
                             ),
-                          ),
+                            "I agree to the ".text.make(),
+                            termsCondition.text
+                                .color(redColor)
+                                .fontFamily(semibold)
+                                .make(),
+                            " & ".text.make(),
+                            privacyPolicy.text
+                                .color(redColor)
+                                .fontFamily(semibold)
+                                .make(),
+                          ],
                         ),
-                      ],
-                    ),
-                    10.heightBox,
-                    commonElevatedButton(
-                      backgroundColor: redColor,
-                      foregroundColor: whiteColor,
-                      onPress: () {},
-                      title: login,
-                    ),
-                    10.heightBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        alreadyHaveAnAccount.text.make(),
-                        3.widthBox,
-                        login.text
-                            .fontFamily(bold)
-                            .color(redColor)
-                            .make()
-                            .onTap(() {
-                          Get.back();
-                        })
-                      ],
-                    ),
-                  ],
-                )
-                    .box
-                    .white
-                    .width(context.screenWidth - 30)
-                    .padding(
-                      const EdgeInsets.all(16),
-                    )
-                    .rounded
-                    .make(),
+                      ),
+                      10.heightBox,
+                      controller.isLoadding.value
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation(redColor),
+                              ),
+                            )
+                          : commonElevatedButton(
+                              backgroundColor: redColor,
+                              foregroundColor: whiteColor,
+                              onPress: () async {
+                                controller.isLoadding(true);
+                                if (isChecked != false) {
+                                  try {
+                                    await controller
+                                        .signUpMethod(
+                                      email: txtemail.text,
+                                      password: txtpassword.text,
+                                      context: context,
+                                    )
+                                        .then((value) {
+                                      controller.storeUserData(
+                                        name: txtname.text,
+                                        password: txtpassword.text,
+                                        email: txtemail.text,
+                                        image: '',
+                                      );
+                                    }).then((value) {
+                                      VxToast.show(
+                                        context,
+                                        msg: 'Logged in successfully',
+                                      );
+                                      Get.offAll(() => const DashBoardScreen());
+                                    });
+                                  } catch (e) {
+                                    VxToast.show(context, msg: e.toString());
+                                    firebaseAuth.signOut();
+                                  }
+                                } else {
+                                  controller.isLoadding(false);
+                                }
+                              },
+                              title: signup,
+                            ),
+                      10.heightBox,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          alreadyHaveAnAccount.text.make(),
+                          3.widthBox,
+                          login.text
+                              .fontFamily(bold)
+                              .color(redColor)
+                              .make()
+                              .onTap(() {
+                            Get.back();
+                          })
+                        ],
+                      ),
+                    ],
+                  )
+                      .box
+                      .white
+                      .width(context.screenWidth - 30)
+                      .padding(
+                        const EdgeInsets.all(16),
+                      )
+                      .rounded
+                      .make(),
+                ),
               ],
             ),
           ),

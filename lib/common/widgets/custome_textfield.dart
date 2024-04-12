@@ -5,6 +5,7 @@ Widget customeTextField({
   String? title,
   String? hint,
   controller,
+  bool obscureText = false,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -12,6 +13,7 @@ Widget customeTextField({
       title!.text.color(redColor).fontFamily(semibold).size(16).make(),
       5.heightBox,
       TextFormField(
+        obscureText: obscureText,
         controller: controller,
         decoration: InputDecoration(
           hintText: hint,

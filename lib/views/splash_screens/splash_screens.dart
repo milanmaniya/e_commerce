@@ -1,6 +1,8 @@
 import 'package:e_commerce/common/widgets/common_logo_container.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/views/auth_screens/login_screen.dart';
+import 'package:e_commerce/views/dashboard_screen/dashboard_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +16,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   changeScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const LoginScreen());
+      firebaseAuth.authStateChanges().listen((User? user) {
+        if (user == null && mounted) {
+          Get.to(() => const LoginScreen());
+        } else {
+          Get.to(() => const DashBoardScreen());
+        }
+      });
     });
   }
 

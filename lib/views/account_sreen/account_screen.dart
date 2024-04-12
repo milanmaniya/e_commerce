@@ -1,8 +1,12 @@
 import 'package:e_commerce/common/widgets/bg_widget.dart';
+import 'package:e_commerce/controller/auth_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/utils/constants/icon_lists.dart';
 import 'package:e_commerce/views/account_sreen/components/details_card.dart';
+import 'package:e_commerce/views/account_sreen/edit_account_screen.dart';
+import 'package:e_commerce/views/auth_screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AccountSCreen extends StatefulWidget {
   const AccountSCreen({super.key});
@@ -12,6 +16,8 @@ class AccountSCreen extends StatefulWidget {
 }
 
 class _AccountSCreenState extends State<AccountSCreen> {
+  final controller = Get.put(AuthContoller());
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -27,7 +33,9 @@ class _AccountSCreenState extends State<AccountSCreen> {
                     Icons.edit,
                     color: whiteColor,
                   ),
-                ).onTap(() {}),
+                ).onTap(() {
+                  Get.to(() => const EditAccountScreen());
+                }),
                 Row(
                   children: [
                     Image.asset(
@@ -52,7 +60,10 @@ class _AccountSCreenState extends State<AccountSCreen> {
                           color: whiteColor,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        controller.signOutMethod(context);
+                        Get.offAll(() => const LoginScreen());
+                      },
                       child: "Logout".text.white.fontFamily(semibold).make(),
                     )
                   ],

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthContoller extends GetxController {
+  var isLoadding = false.obs;
+
   Future<UserCredential?> loginMethod(
       {required String email,
       required String password,
@@ -52,6 +54,7 @@ class AuthContoller extends GetxController {
       'password': password,
       'email': email,
       'image': '',
+      'id': user!.uid,
     });
   }
 
