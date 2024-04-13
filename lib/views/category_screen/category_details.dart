@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/widgets/bg_widget.dart';
+import 'package:e_commerce/controller/product_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/utils/constants/icon_lists.dart';
 import 'package:e_commerce/views/category_screen/item_details.dart';
@@ -15,6 +16,8 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
+  final controller = Get.find<ProductController>();
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -26,19 +29,22 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         body: Container(
           padding: const EdgeInsets.all(12),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: List.generate(
-                    6,
-                    (index) => 'Baby Clothing'
+                    controller.subCat.length,
+                    (index) => "${controller.subCat[index]}"
                         .text
                         .align(TextAlign.center)
                         .make()
                         .box
                         .alignCenter
-                        .size(100, 40)
+                        .height(40)
+                        .padding(const EdgeInsets.all(10))
                         .roundedSM
                         .margin(
                           const EdgeInsets.symmetric(horizontal: 5),

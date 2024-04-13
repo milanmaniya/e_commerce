@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/widgets/bg_widget.dart';
+import 'package:e_commerce/controller/product_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:e_commerce/utils/constants/icon_lists.dart';
 import 'package:e_commerce/views/category_screen/category_details.dart';
@@ -13,6 +14,8 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  final controller = Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -62,6 +65,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 .make()
                 .onTap(
               () {
+                controller.getSubCategories(categoriesList[index]);
+
                 Get.to(
                   () => CategoryDetails(
                     title: categoriesList[index],
