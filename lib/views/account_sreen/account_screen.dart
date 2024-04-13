@@ -1,3 +1,7 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/common/widgets/bg_widget.dart';
 import 'package:e_commerce/controller/auth_controller.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
@@ -22,94 +26,134 @@ class _AccountSCreenState extends State<AccountSCreen> {
   Widget build(BuildContext context) {
     return bgWidget(
       child: Scaffold(
-        body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              children: [
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Icon(
-                    Icons.edit,
-                    color: whiteColor,
-                  ),
-                ).onTap(() {
-                  Get.to(() => const EditAccountScreen());
-                }),
-                Row(
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection(usersCollections)
+              .where('id', isEqualTo: user!.uid)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting &&
+                snapshot.connectionState == ConnectionState.none) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(redColor),
+                ),
+              );
+            }
+
+            final data = {};
+            if (snapshot.hasData) {
+              for (var element in snapshot.data!.docs) {
+                log(element.data().toString());
+
+                data.addAll(element.data());
+              }
+            }
+
+            return SafeArea(
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                child: Column(
                   children: [
-                    Image.asset(
-                      imgProfile2,
-                      width: 90,
-                      fit: BoxFit.cover,
-                    ).box.clip(Clip.antiAlias).roundedFull.make(),
-                    10.widthBox,
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          "Dummy User".text.fontFamily(semibold).white.make(),
-                          5.heightBox,
-                          "Customber@example.com".text.white.make(),
-                        ],
+                    const Align(
+                      alignment: Alignment.centerRight,
+                      child: Icon(
+                        Icons.edit,
+                        color: whiteColor,
                       ),
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          color: whiteColor,
+                    ).onTap(() {
+                      Get.to(() => const EditAccountScreen());
+                    }),
+                    Row(
+                      children: [
+                        data['image'] == null
+                            ? Image.asset(
+                                imgProfile2,
+                                width: 90,
+                                fit: BoxFit.cover,
+                              ).box.clip(Clip.antiAlias).roundedFull.make()
+                            : Image.file(
+                                File(
+                                  data['image'],
+                                ),
+                                width: 100,
+                                fit: BoxFit.cover,
+                              ).box.clip(Clip.antiAlias).roundedFull.make(),
+                        10.widthBox,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              data['name']
+                                  .toString()
+                                  .text
+                                  .fontFamily(semibold)
+                                  .white
+                                  .make(),
+                              5.heightBox,
+                              data['email'].toString().text.white.make(),
+                            ],
+                          ),
                         ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                              color: whiteColor,
+                            ),
+                          ),
+                          onPressed: () async {
+                            controller.signOutMethod(context);
+                            Get.offAll(() => const LoginScreen());
+                          },
+                          child:
+                              "Logout".text.white.fontFamily(semibold).make(),
+                        )
+                      ],
+                    ),
+                    20.heightBox,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        detailsCard(
+                            count: data['card_count'].toString(),
+                            title: "In Your Cart",
+                            width: context.screenWidth / 3.3),
+                        detailsCard(
+                            count: data['wishlist_count'].toString(),
+                            title: "In Your Wishlist",
+                            width: context.screenWidth / 3.3),
+                        detailsCard(
+                            count: data['order_count'].toString(),
+                            title: "Your Orders",
+                            width: context.screenWidth / 3.3),
+                      ],
+                    ),
+                    20.heightBox,
+                    ListView.separated(
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) => const Divider(
+                        color: lightGrey,
                       ),
-                      onPressed: () async {
-                        controller.signOutMethod(context);
-                        Get.offAll(() => const LoginScreen());
+                      itemCount: profileButtonList.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Image.asset(
+                            profileButtonIcons[index],
+                            width: 22,
+                          ),
+                          title: profileButtonList[index]
+                              .text
+                              .fontFamily(semibold)
+                              .color(darkFontGrey)
+                              .make(),
+                        );
                       },
-                      child: "Logout".text.white.fontFamily(semibold).make(),
-                    )
+                    ).box.white.shadowSm.roundedSM.make(),
                   ],
                 ),
-                20.heightBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    detailsCard(
-                        count: "00",
-                        title: "In Your Cart",
-                        width: context.screenWidth / 3.3),
-                    detailsCard(
-                        count: "32",
-                        title: "In Your Wishlist",
-                        width: context.screenWidth / 3.3),
-                    detailsCard(
-                        count: "67",
-                        title: "Your Orders",
-                        width: context.screenWidth / 3.3),
-                  ],
-                ),
-                20.heightBox,
-                ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) => const Divider(
-                    color: lightGrey,
-                  ),
-                  itemCount: profileButtonList.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Image.asset(
-                        profileButtonIcons[index],
-                        width: 22,
-                      ),
-                      title: profileButtonList[index]
-                          .text
-                          .fontFamily(semibold)
-                          .color(darkFontGrey)
-                          .make(),
-                    );
-                  },
-                ).box.white.shadowSm.roundedSM.make(),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

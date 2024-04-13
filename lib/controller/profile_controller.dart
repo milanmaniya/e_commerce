@@ -16,6 +16,12 @@ class ProfileController extends GetxController {
         return null;
       } else {
         profileImagePath.value = imag.path;
+
+        firebaseFirestore.collection(usersCollections).doc(user!.uid).update({
+          'image': profileImagePath.value,
+        }).then((value) {
+          VxToast.show(context, msg: 'Photo uplod successfully completed');
+        });
       }
     } catch (e) {
       VxToast.show(context, msg: e.toString());
