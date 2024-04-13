@@ -62,7 +62,11 @@ class _AccountSCreenState extends State<AccountSCreen> {
                         color: whiteColor,
                       ),
                     ).onTap(() {
-                      Get.to(() => const EditAccountScreen());
+                      Get.to(
+                        () => EditAccountScreen(
+                          data: data,
+                        ),
+                      );
                     }),
                     Row(
                       children: [

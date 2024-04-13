@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EditAccountScreen extends StatefulWidget {
-  const EditAccountScreen({super.key});
+  const EditAccountScreen({super.key, required this.data});
+
+  final Map data;
 
   @override
   State<EditAccountScreen> createState() => _EditAccountScreenState();
@@ -56,6 +58,9 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                 }
               }
 
+              controller.txtname.text = data['name'].toString();
+              controller.txtpass.text = data['password'].toString();
+
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -90,18 +95,26 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   ),
                   20.heightBox,
                   customeTextField(
+                    controller: controller.txtname,
                     hint: nameHint,
                     title: name,
                   ),
                   15.heightBox,
                   customeTextField(
+                    controller: controller.txtpass,
                     hint: passwordHint,
                     title: password,
                     obscureText: true,
                   ),
                   20.heightBox,
                   commonElevatedButton(
-                    onPress: () {},
+                    onPress: () {
+                      controller.changeDetails(
+                        context,
+                        controller.txtname.text,
+                        controller.txtpass.text,
+                      );
+                    },
                     backgroundColor: redColor,
                     foregroundColor: whiteColor,
                     title: 'Save',

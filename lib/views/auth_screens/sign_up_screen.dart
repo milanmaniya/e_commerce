@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:e_commerce/common/widgets/bg_widget.dart';
 import 'package:e_commerce/common/widgets/common_logo_container.dart';
 import 'package:e_commerce/common/widgets/custome_textfield.dart';
@@ -33,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       child: bgWidget(
         child: Scaffold(
-          resizeToAvoidBottomInset: false, 
+          resizeToAvoidBottomInset: false,
           body: Center(
             child: Column(
               children: [
