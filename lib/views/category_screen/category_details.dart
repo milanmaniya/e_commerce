@@ -21,7 +21,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: categories.text.white.fontFamily(bold).make(),
+          title: widget.title.text.white.fontFamily(bold).make(),
         ),
         body: Container(
           padding: const EdgeInsets.all(12),

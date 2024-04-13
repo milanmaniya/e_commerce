@@ -59,7 +59,6 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               }
 
               controller.txtname.text = data['name'].toString();
-              controller.txtpass.text = data['password'].toString();
 
               return Column(
                 mainAxisSize: MainAxisSize.min,
@@ -101,19 +100,39 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   ),
                   15.heightBox,
                   customeTextField(
-                    controller: controller.txtpass,
+                    obscureText: true,
+                    controller: controller.txtoldpass,
                     hint: passwordHint,
-                    title: password,
+                    title: "Old $password",
+                  ),
+                  15.heightBox,
+                  customeTextField(
+                    controller: controller.txtnewpass,
+                    hint: passwordHint,
+                    title: "New $password",
                     obscureText: true,
                   ),
                   20.heightBox,
                   commonElevatedButton(
                     onPress: () {
-                      controller.changeDetails(
-                        context,
-                        controller.txtname.text,
-                        controller.txtpass.text,
-                      );
+                      if (data['password'] == controller.txtoldpass.text) {
+                        controller.changeAuthPassword(
+                          data['email'].toString(),
+                          controller.txtoldpass.text,
+                          controller.txtnewpass.text,
+                        );
+
+                        controller.changeDetails(
+                          context,
+                          controller.txtname.text,
+                          controller.txtnewpass.text,
+                        );
+                      } else {
+                        VxToast.show(
+                          context,
+                          msg: 'Old password are not same ',
+                        );
+                      }
                     },
                     backgroundColor: redColor,
                     foregroundColor: whiteColor,
