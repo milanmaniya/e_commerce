@@ -6,6 +6,7 @@ class ProductController extends GetxController {
   final subCat = [];
 
   getSubCategories(title) async {
+    subCat.clear();
     final data =
         await rootBundle.loadString("lib/services/category_model.json");
 

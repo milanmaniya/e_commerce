@@ -65,13 +65,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 .make()
                 .onTap(
               () {
-                controller.getSubCategories(categoriesList[index]);
-
                 Get.to(
                   () => CategoryDetails(
                     title: categoriesList[index],
                   ),
                 );
+                controller.getSubCategories(categoriesList[index]);
               },
             ),
           ),
