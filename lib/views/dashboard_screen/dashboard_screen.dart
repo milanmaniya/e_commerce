@@ -19,8 +19,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return WillPopScope(
       onWillPop: () async {
         showDialog(
+          barrierDismissible: false,
           context: context,
-          builder: (context) => exitDialog(),
+          builder: (context) => exitDialog(context),
         );
         return false;
       },

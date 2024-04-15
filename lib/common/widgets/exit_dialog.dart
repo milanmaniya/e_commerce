@@ -1,9 +1,11 @@
 import 'package:e_commerce/common/widgets/elevated_button.dart';
 import 'package:e_commerce/utils/constants/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-Widget exitDialog() {
+Widget exitDialog(context) {
   return Dialog(
+     
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -20,13 +22,17 @@ Widget exitDialog() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             commonElevatedButton(
-              onPress: () {},
+              onPress: () {
+                SystemNavigator.pop();
+              },
               backgroundColor: redColor,
               foregroundColor: whiteColor,
               title: 'Okay',
             ),
             commonElevatedButton(
-              onPress: () {},
+              onPress: () {
+                Navigator.pop(context);
+              },
               backgroundColor: redColor,
               foregroundColor: whiteColor,
               title: 'No',
@@ -34,6 +40,14 @@ Widget exitDialog() {
           ],
         )
       ],
-    ).box.color(lightGrey).roundedSM.shadowMd.make(),
+    )
+        .box
+        .color(lightGrey)
+        .padding(
+          const EdgeInsets.all(10),
+        )
+        .roundedSM
+        .shadowMd
+        .make(),
   );
 }

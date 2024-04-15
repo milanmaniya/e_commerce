@@ -35,11 +35,15 @@ class ProfileController extends GetxController {
   }
 
   changeDetails(context, name, password) async {
+
+
     try {
-      firebaseFirestore.collection(usersCollections).doc(user!.uid).update({
-        'name': name,
-        'password': password,
-      }).then((value) {
+      firebaseFirestore.collection(usersCollections).doc(user!.uid).update(
+        {
+          'name': name,
+          'password': password,
+        },
+      ).then((value) {
         VxToast.show(context, msg: 'data updated successfully completed');
       });
     } catch (e) {
