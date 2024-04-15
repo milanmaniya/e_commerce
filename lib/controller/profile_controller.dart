@@ -42,8 +42,7 @@ class ProfileController extends GetxController {
         {
           'name': name,
           'password': password,
-        },
-      ).then((value) {
+        }      ).then((value) {
         VxToast.show(context, msg: 'data updated successfully completed');
       });
     } catch (e) {

@@ -10,7 +10,7 @@ import 'package:e_commerce/views/dashboard_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget { 
   const LoginScreen({super.key});
 
   @override
